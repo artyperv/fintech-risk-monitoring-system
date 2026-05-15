@@ -46,6 +46,7 @@ docker compose up --build
 ```
 
 ### Seed the db with example data
+Run in new console
 ```bash
 docker compose exec backend python scripts/seed_data.py
 ```
@@ -86,16 +87,14 @@ Poll business detail or history while `pending_evaluation` is set.
 
 ## Tests
 
-```bash
-# Full stack
-docker compose up --build
+API tests run against Postgres inside the Compose stack (separate DB `riskdb_test`, created automatically). Start the stack first:
 
-# API tests (requires Postgres; see Backend section)
-cd backend
-pip install -r requirements-dev.txt
-alembic upgrade head
-pytest -q
+```bash
+docker compose up -d --build
+docker compose exec backend sh -c 'pip install -q -r requirements-dev.txt && PYTHONPATH=. pytest -q'
 ```
+
+`pip install` is only needed once per container rebuild (or add `requirements-dev.txt` to the backend image if you prefer).
 
 ## Frontend (local dev)
 
