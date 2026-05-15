@@ -2,6 +2,8 @@
 
 Take-home scope is defined in [TASK.md](TASK.md). The stack includes a **FastAPI** backend (PostgreSQL, SQLModel, Alembic, async SQLAlchemy) and a **React** frontend (Vite, TanStack Router, TanStack Query, Hey API codegen).
 
+**AI tooling:** I used **Cursor** and **ChatGPT** to speed up initial project structure and boilerplate (scaffolding, README drafts). Core API design, risk-evaluation flow, and final integration were reviewed and adjusted manually.
+
 ## Architecture (short)
 
 - **API** (`/api/v1`): businesses CRUD/list/filter, detail with risk summary, async evaluation trigger (`202`), risk history.
